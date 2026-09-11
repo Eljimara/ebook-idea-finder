@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Idees de guides / ebooks</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Recherche d'idees de guides &amp; ebooks</h1>
+    <nav>
+      <a href="index.html" class="nav-link active">Recherche</a>
+      <a href="idees.html" class="nav-link">Mes idees</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Univers / marques</h2>
+        <button id="btn-add-univers" class="btn btn-primary">+ Ajouter un univers</button>
+      </div>
+      <div id="univers-list" class="univers-list"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Rechercher des idees</h2>
+      <div class="search-mode">
+        <label>
+          <input type="radio" name="search-mode" value="univers" checked />
+          Univers existant
+        </label>
+        <label>
+          <input type="radio" name="search-mode" value="keyword" />
+          Mot-cle libre
+        </label>
+      </div>
+
+      <div class="search-fields">
+        <select id="select-univers"></select>
+        <input id="input-keyword" type="text" placeholder="Ex : planificateur budget" disabled />
+      </div>
+
+      <button id="btn-search" class="btn btn-primary">Rechercher des idees</button>
+    </section>
+
+    <section class="panel">
+      <h2>Resultats <span id="search-summary"></span></h2>
+      <div id="results-status"></div>
+      <div id="results-table-wrap" class="table-scroll" hidden>
+        <table id="results-table" class="results-table">
+          <thead>
+            <tr>
+              <th>Requete / suggestion</th>
+              <th>Source</th>
+              <th>Mot-cle utilise</th>
+              <th class="col-action"></th>
+            </tr>
+          </thead>
+          <tbody id="results-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="univers-dialog">
+    <form id="univers-form">
+      <h3 id="univers-dialog-title">Ajouter un univers</h3>
+      <input type="hidden" id="univers-id" />
+      <label>
+        Nom
+        <input id="univers-nom" type="text" required />
+      </label>
+      <label>
+        Description
+        <textarea id="univers-description" rows="3"></textarea>
+      </label>
+      <label>
+        Mots-cles de recherche
+        <textarea id="univers-mots-cles" rows="2" placeholder="Ex : femme 40 ans, beaute apres 40 ans"></textarea>
+        <small>C'est ce texte (separe par des virgules) qui sera utilise pour la recherche Google Trends / Suggestions Google - pas le nom de l'univers.</small>
+      </label>
+      <label>
+        Mots a exclure (optionnel)
+        <textarea id="univers-mots-exclus" rows="2" placeholder="Ex : wedding, ikea, crypto"></textarea>
+        <small>Tout resultat contenant un de ces mots (separes par des virgules) sera retire des resultats de recherche pour cet univers.</small>
+      </label>
+      <div class="dialog-actions">
+        <button type="button" id="btn-cancel-univers" class="btn">Annuler</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

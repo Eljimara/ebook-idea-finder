@@ -1,0 +1,326 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #f4f5f7;
+  color: #1f2430;
+  margin: 0;
+  padding: 0 0 3rem;
+}
+
+header {
+  background: #1f2937;
+  color: white;
+  padding: 1.25rem 2rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+nav {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 1.25rem;
+}
+
+nav .nav-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+}
+
+nav .nav-link:hover {
+  color: white;
+}
+
+nav .nav-link.active {
+  color: white;
+  border-bottom-color: #2563eb;
+}
+
+main {
+  max-width: 960px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.panel {
+  background: white;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  border: 1px solid #d0d5dd;
+  background: white;
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn:hover { background: #f0f1f3; }
+
+.btn-primary {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+}
+
+.btn-primary:hover { background: #1d4ed8; }
+
+.btn-danger {
+  border-color: #dc2626;
+  color: #dc2626;
+  background: white;
+}
+
+.btn-danger:hover { background: #fee2e2; }
+
+.univers-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.univers-card {
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.univers-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.univers-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #566;
+  flex-grow: 1;
+}
+
+.univers-card .card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-mode {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.search-fields {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.search-fields select,
+.search-fields input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 1rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.results-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+}
+
+.results-table th,
+.results-table td {
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.results-table td:first-child {
+  white-space: normal;
+  min-width: 220px;
+}
+
+.results-table th {
+  background: #f9fafb;
+}
+
+.results-table .col-action {
+  width: 2.75rem;
+}
+
+#results-status {
+  font-size: 0.9rem;
+  color: #566;
+}
+
+dialog {
+  border: none;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 380px;
+  max-width: 90vw;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#univers-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+#univers-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+#univers-form input,
+#univers-form textarea {
+  padding: 0.5rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+#univers-form small {
+  color: #667085;
+  font-size: 0.78rem;
+}
+
+.univers-card .card-mots-cles {
+  font-size: 0.78rem;
+  color: #2563eb;
+  margin: 0;
+}
+
+.univers-card .card-mots-exclus {
+  font-size: 0.78rem;
+  color: #b42318;
+  margin: 0;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.btn-icon {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.btn-saved {
+  color: #067647;
+  border-color: #067647;
+  background: #ecfdf3;
+  cursor: default;
+}
+
+.btn-saved:hover {
+  background: #ecfdf3;
+}
+
+/* Page "Mes idees" */
+
+.statut-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.statut-column h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.idee-card {
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.idee-card .idee-texte {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.idee-card .idee-meta {
+  font-size: 0.78rem;
+  color: #667085;
+}
+
+.idee-card .idee-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.idee-card select {
+  flex: 1;
+  padding: 0.35rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  font-size: 0.82rem;
+}
+
+.empty-column {
+  font-size: 0.85rem;
+  color: #98a2b3;
+  font-style: italic;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "ebook-idea-finder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Outil interne pour trouver des idees de guides PDF/ebooks a partir de tendances (Google Trends + Suggestions Google).",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "seed": "node scripts/seed.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "google-trends-api": "^4.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
