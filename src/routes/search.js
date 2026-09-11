@@ -26,17 +26,24 @@ async function searchForKeyword(motCle) {
 }
 
 function dedupeByText(resultats) {
-  const seen = new Set();
-  const deduped = [];
+  const parKey = new Map();
+  const ordered = [];
 
   for (const r of resultats) {
     const key = r.texte.toLowerCase().trim().replace(/\s+/g, ' ');
-    if (seen.has(key)) continue;
-    seen.add(key);
-    deduped.push(r);
+    const existant = parKey.get(key);
+
+    if (existant) {
+      existant.occurrences += 1;
+      continue;
+    }
+
+    const entree = { ...r, occurrences: 1 };
+    parKey.set(key, entree);
+    ordered.push(entree);
   }
 
-  return deduped;
+  return ordered;
 }
 
 function filterExcluded(resultats, motsExclus) {
@@ -57,7 +64,11 @@ function sortByRelevance(resultats, motsCles) {
     return motsClesLower.some((mc) => texteLower.includes(mc));
   };
 
-  return [...resultats].sort((a, b) => Number(!estPertinent(a.texte)) - Number(!estPertinent(b.texte)));
+  return [...resultats].sort((a, b) => {
+    const diffPertinence = Number(!estPertinent(a.texte)) - Number(!estPertinent(b.texte));
+    if (diffPertinence !== 0) return diffPertinence;
+    return b.occurrences - a.occurrences;
+  });
 }
 
 router.get('/', async (req, res) => {

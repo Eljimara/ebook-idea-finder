@@ -183,10 +183,12 @@ function renderResults(data) {
 
   for (const r of data.resultats) {
     const tr = document.createElement('tr');
+    const recurrenceLabel = r.occurrences > 1 ? `×${r.occurrences}` : '';
     tr.innerHTML = `
       <td>${escapeHtml(r.texte)}</td>
       <td>${escapeHtml(r.source)}</td>
       <td>${escapeHtml(r.motCle)}</td>
+      <td>${escapeHtml(recurrenceLabel)}</td>
       <td></td>
     `;
     const actionCell = tr.lastElementChild;
